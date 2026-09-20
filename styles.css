@@ -241,7 +241,7 @@ button {
   position: absolute;
   z-index: 2;
   inset: 16px 15px 15px;
-  padding: 55px 72px 35px;
+  padding: 55px 32px 35px;
   text-align: center;
   background: #fffdf9;
   color: #1d3540;
@@ -271,7 +271,7 @@ button {
 
 .wish-card article span {
   color: #29434c;
-  font: 18px/1.5 'DM Sans'
+  font: 16px/1.5 'DM Sans'
 }
 
 .wish-card article small {
