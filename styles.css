@@ -1,0 +1,666 @@
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  background: #061a2d;
+  color: #effffb;
+  font-family: 'DM Sans';
+  overflow: hidden
+}
+
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 34px;
+  background: radial-gradient(circle at 50% 20%, #157c8b88, transparent 30%), linear-gradient(145deg, #061a2d, #0b5265)
+}
+
+.screen.active {
+  display: flex
+}
+
+.screen#home {
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(ellipse at 50% 11%, #1db5cb62, transparent 31%), linear-gradient(145deg, #06172d, #073b5d 55%, #062537)
+}
+
+#home:before {
+  content: '✦　·　✧　·　✦　·　✧　·　✦';
+  position: absolute;
+  top: 6%;
+  width: 100%;
+  color: #ffe388;
+  font-size: 20px;
+  letter-spacing: 5vw;
+  text-shadow: 0 0 12px #ffe08b;
+  animation: twinkle 2.8s infinite
+}
+
+.panda {
+  object-fit: contain;
+  filter: drop-shadow(0 17px 14px #0008)
+}
+
+.hero {
+  width: min(310px, 70vw);
+  max-height: 35vh;
+  animation: float 3s infinite
+}
+
+.guide {
+  position: absolute;
+  width: 130px;
+  right: 3%;
+  bottom: 3%;
+  animation: float 4s infinite
+}
+
+p {
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: #6dffe3;
+  font-weight: 700
+}
+
+h1,
+h2 {
+  font: 600 clamp(40px, 8vw, 73px)/1 'Playfair Display';
+  margin: 8px
+}
+
+h2 {
+  font-size: clamp(34px, 6vw, 58px)
+}
+
+em {
+  color: #c6ffe6
+}
+
+span {
+  max-width: 440px;
+  line-height: 1.6;
+  color: #d3f4ed
+}
+
+button {
+  border: 0;
+  border-radius: 99px;
+  padding: 15px 22px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #c7ffe5, #4bd7ca);
+  color: #05334b;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 9px 25px #38d7ca55
+}
+
+.balloon {
+  position: absolute;
+  width: 68px;
+  height: 89px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #43bcf4, #0878c2);
+  box-shadow: inset -12px -13px #00295055, 0 0 22px #5eefff66;
+  animation: balloon 5s infinite;
+  z-index: 1
+}
+
+.balloon:after {
+  content: '';
+  position: absolute;
+  top: 87px;
+  left: 50%;
+  height: 140px;
+  border-left: 1px solid #d5fff488
+}
+
+.a {
+  left: 7%;
+  top: 19%
+}
+
+.b {
+  right: 8%;
+  top: 12%;
+  background: linear-gradient(135deg, #82f3dc, #25a99d);
+  animation-delay: -2s
+}
+
+.c {
+  right: 17%;
+  bottom: 4%;
+  background: linear-gradient(135deg, #ffe98b, #e9a742);
+  animation-delay: -4s
+}
+
+#home .panda,
+#home h1,
+#home p,
+#home>span,
+#home button {
+  z-index: 2
+}
+
+#letters {
+  isolation: isolate;
+  overflow: hidden;
+  gap: 4px;
+  background: radial-gradient(ellipse at 50% 50%, #0f879653, transparent 37%), linear-gradient(145deg, #04182b, #07394f)
+}
+
+#letters:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #57e6db 1px, transparent 2px), radial-gradient(circle, #f0c55a 1px, transparent 2px);
+  background-size: 85px 85px, 137px 137px;
+  opacity: .3
+}
+
+.fairy-lights {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 84px;
+  background: radial-gradient(circle, #fff4ae 0 4px, #f2b940 5px, transparent 10px) 0 42px/61px 57px repeat-x;
+  filter: drop-shadow(0 0 8px #ffcf64)
+}
+
+#letters>p,
+#letters h2,
+#letters button,
+.wish-scene {
+  z-index: 1
+}
+
+#letters h2 {
+  margin: 4px 0 11px;
+  font-size: clamp(34px, 5vw, 53px);
+  text-shadow: 0 4px 16px #001625
+}
+
+.wish-scene {
+  width: min(720px, 95vw);
+  height: 270px;
+  position: relative;
+  animation: scene-arrive 1.25s cubic-bezier(.2, .8, .2, 1) both
+}
+
+.panda-puller {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  bottom: -9px;
+  width: 190px;
+  max-height: 225px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 12px #001625aa)
+}
+
+.wish-card {
+  position: absolute;
+  z-index: 3;
+  left: 205px;
+  top: 5px;
+  width: min(590px, 83vw);
+  height: 258px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #2eb7ca, #08728b);
+  box-shadow: 18px 18px 0 #022d42, 0 20px 45px #0009;
+  transform: rotate(-1deg)
+}
+
+.wish-card:before {
+  content: '';
+  position: absolute;
+  inset: 13px;
+  border: 1px dashed #cbfff4a8;
+  border-radius: 21px
+}
+
+.wish-card:after {
+  content: '✦  ·  ✦  ·  ✦';
+  position: absolute;
+  left: 34px;
+  bottom: 18px;
+  color: #ffe48b;
+  font-size: 15px;
+  letter-spacing: 9px
+}
+
+.wish-card article {
+  position: absolute;
+  z-index: 2;
+  inset: 16px 15px 15px;
+  padding: 55px 72px 35px;
+  text-align: center;
+  background: #fffdf9;
+  color: #1d3540;
+  border-radius: 22px 22px 39px 22px;
+  box-shadow: inset 0 0 0 2px #d8f7f2
+}
+
+.wish-card article:before {
+  content: 'A tiny birthday wish';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #168a99;
+  font: 700 10px 'DM Sans';
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  white-space: nowrap
+}
+
+.wish-card article b {
+  display: block;
+  color: #123d4b;
+  font: 30px 'Playfair Display';
+  margin: 3px 0 11px
+}
+
+.wish-card article span {
+  color: #29434c;
+  font: 18px/1.5 'DM Sans'
+}
+
+.wish-card article small {
+  position: absolute;
+  right: 28px;
+  top: 19px;
+  color: #f05d87;
+  font-size: 25px
+}
+
+.heart-bunch {
+  position: absolute;
+  z-index: 4;
+  left: -29px;
+  top: -28px;
+  color: #f1577c;
+  font-size: 47px;
+  transform: rotate(-11deg)
+}
+
+.heart-bunch i {
+  position: absolute;
+  font-style: normal;
+  font-size: 22px;
+  color: #ff93aa
+}
+
+.heart-bunch i:nth-child(1) {
+  left: 9px;
+  top: 5px
+}
+
+.heart-bunch i:nth-child(2) {
+  right: -5px;
+  top: 22px
+}
+
+.tiny-love {
+  position: absolute;
+  z-index: 3;
+  right: 32px;
+  top: 19px;
+  color: #e7507a;
+  font-size: 25px;
+  letter-spacing: -9px
+}
+
+.card-panda {
+  position: absolute;
+  z-index: 4;
+  right: -20px;
+  bottom: -18px;
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #effffc;
+  border: 3px solid #75e6d8;
+  font-size: 37px
+}
+
+#letters button {
+  margin-top: 16px
+}
+
+.cake #wish {
+  padding: 0;
+  background: none;
+  box-shadow: none
+}
+
+.cake #wish img {
+  width: min(330px, 70vw);
+  max-height: 43vh;
+  object-fit: contain
+}
+
+.final {
+  background: radial-gradient(circle at 50% 62%, #18998488, transparent 29%), #06182c
+}
+
+.ribbon {
+  position: absolute;
+  top: -8%;
+  width: min(880px, 110vw);
+  opacity: .65;
+  animation: float 6s infinite
+}
+
+.finalpanda {
+  position: absolute;
+  width: 150px;
+  right: 6%;
+  top: 5%;
+  animation: dance 1s ease-in-out infinite;
+  transform-origin: 50% 92%;
+  filter: drop-shadow(0 0 17px #53e5d777)
+}
+
+.heart {
+  width: 350px;
+  height: 330px;
+  position: relative;
+  margin: 10px auto 22px;
+  animation: heart-glow-pulse 3.5s ease-in-out infinite;
+}
+
+.heart:before {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(29, 181, 203, 0.4), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart:after {
+  content: '✨  ♡  ✨';
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 15px;
+  letter-spacing: 10px;
+  color: #ffe68a;
+  text-shadow: 0 0 10px #ffd55f;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.photo {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3.5px solid #fffdf9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 16px rgba(85, 224, 208, 0.35);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0.3s ease;
+}
+
+.photo:hover {
+  transform: scale(1.15) !important;
+  z-index: 20 !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 230, 138, 0.8) !important;
+}
+
+/* 1. Top Left Lobe */
+.photo:nth-child(1) {
+  left: 54px;
+  top: 10px;
+  transform: rotate(-5deg);
+}
+
+/* 2. Top Right Lobe */
+.photo:nth-child(2) {
+  left: 206px;
+  top: 10px;
+  transform: rotate(5deg);
+}
+
+/* 3. Left Shoulder */
+.photo:nth-child(3) {
+  left: 8px;
+  top: 78px;
+  transform: rotate(-10deg);
+}
+
+/* 4. Center Hero Photo (Center of Heart) */
+.photo:nth-child(4) {
+  left: 126px;
+  top: 68px;
+  width: 98px;
+  height: 98px;
+  border: 3.5px solid #ffe68a;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), 0 0 22px rgba(255, 215, 0, 0.55);
+  z-index: 6;
+  transform: scale(1.02);
+}
+
+/* 5. Right Shoulder */
+.photo:nth-child(5) {
+  left: 252px;
+  top: 78px;
+  transform: rotate(10deg);
+}
+
+/* 6. Lower Left Inward Taper */
+.photo:nth-child(6) {
+  left: 58px;
+  top: 154px;
+  transform: rotate(-6deg);
+  z-index: 3;
+}
+
+/* 7. Lower Right Inward Taper */
+.photo:nth-child(7) {
+  left: 202px;
+  top: 154px;
+  transform: rotate(6deg);
+  z-index: 3;
+}
+
+/* 8. Lower Center Anchor */
+.photo:nth-child(8) {
+  left: 131px;
+  top: 154px;
+  z-index: 4;
+}
+
+/* 9. Bottom Heart Point */
+.photo:nth-child(9) {
+  left: 131px;
+  top: 232px;
+  z-index: 5;
+  border-color: #ffd55f;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 18px rgba(85, 224, 208, 0.6);
+}
+
+@keyframes heart-glow-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 18px rgba(78, 224, 208, 0.4));
+  }
+
+  50% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 28px rgba(255, 230, 138, 0.55));
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-12px)
+  }
+}
+
+@keyframes balloon {
+  50% {
+    transform: translateY(-23px) rotate(5deg)
+  }
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: .35;
+    transform: scale(1.04)
+  }
+}
+
+@keyframes scene-arrive {
+  0% {
+    transform: translateX(115px)
+  }
+
+  65% {
+    transform: translateX(-7px)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+}
+
+@keyframes dance {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-7deg)
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(7deg) scale(1.04)
+  }
+}
+
+@media(max-width:600px) {
+  .hero {
+    max-height: 31vh
+  }
+
+  .c {
+    display: none
+  }
+
+  .fairy-lights {
+    top: -15px
+  }
+
+  #letters h2 {
+    margin-top: 18px
+  }
+
+  .wish-scene {
+    height: 275px
+  }
+
+  .panda-puller {
+    width: 100px;
+    left: -16px;
+    bottom: 0
+  }
+
+  .wish-card {
+    left: 80px;
+    width: 86vw;
+    height: 310px
+  }
+
+  body #letters .wish-scene {
+    height: 280px !important;
+  }
+
+  .wish-card article {
+    padding: 40px 20px 30px
+  }
+
+  .wish-card article b {
+    font-size: 24px
+  }
+
+  .wish-card article span {
+    font-size: 16px
+  }
+
+  .guide {
+    width: 90px
+  }
+
+  .finalpanda {
+    width: 105px;
+    right: 2%
+  }
+
+  .heart {
+    transform: scale(0.84);
+    transform-origin: center center;
+    margin: 6px 0 14px;
+  }
+}
+
+/* Pull-card alignment: the main card continues directly from panda's held card. */
+.wish-card {
+  left: 189px;
+  background: linear-gradient(135deg, #b7eee4, #78cfc6);
+  box-shadow: 18px 18px 0 #03394a, 0 20px 45px #0009;
+  border: 2px solid #e7bb55
+}
+
+.wish-card:before {
+  border-color: #d8a53b
+}
+
+.wish-card article {
+  box-shadow: inset 0 0 0 2px #e2c16d;
+  background: #fffdf9
+}
+
+.wish-card article:before {
+  color: #b88b35
+}
+
+@media(max-width:600px) {
+  .wish-card {
+    left: 66px
+  }
+}
+
+/* Center the complete panda-and-card group without reopening the join. */
+#letters .wish-scene {
+  left: 30px
+}
+
+.wish-card {
+  left: 159px
+}
+
+@media(max-width:600px) {
+  #letters .wish-scene {
+    left: 0
+  }
+
+  .wish-card {
+    left: 66px
+  }
+}

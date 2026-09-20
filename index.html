@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>For Kavita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #letters .wish-scene {
+      left: 0 !important;
+      width: min(620px, 92vw) !important;
+      height: 258px !important
+    }
+
+    #letters .wish-card {
+      left: 15px !important;
+      width: min(590px, 88vw) !important;
+      animation: card-center 1.45s .15s cubic-bezier(.2, .8, .2, 1) both !important
+    }
+
+    #letters .panda-puller {
+      animation: panda-exit 1.45s ease both !important
+    }
+
+    #letters button {
+      margin-top: 60px !important
+    }
+
+    @keyframes card-center {
+      0% {
+        left: 159px;
+        transform: rotate(-1deg)
+      }
+
+      70% {
+        left: 8px;
+        transform: rotate(.5deg)
+      }
+
+      100% {
+        left: 15px;
+        transform: rotate(0)
+      }
+    }
+
+    @keyframes panda-exit {
+
+      0%,
+      55% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-105px)
+      }
+    }
+  </style>
+</head>
+
+<body><canvas id="fx"></canvas>
+  <main>
+    <section class="screen active" id="home">
+      <div class="balloon a"></div>
+      <div class="balloon b"></div>
+      <div class="balloon c"></div><img src="assets/panda-birthday.png" class="panda hero">
+      <p>HAPPY BIRTHDAY</p>
+      <h1>Kavita,<br><em>this is for you.</em></h1><span>A tiny birthday surprise with all my heart.</span><button
+        id="start">Open it ♡</button>
+    </section>
+    <section class="screen" id="letters">
+      <div class="fairy-lights"></div>
+      <p id="counter">01 / 05</p>
+      <h2>A little note,<br><em>just for you.</em></h2>
+      <div class="wish-scene"><img class="panda-puller" src="assets/panda-pulling-card.png">
+        <div class="wish-card">
+          <div class="heart-bunch">♥<i>♥</i><i>♥</i></div>
+          <div class="tiny-love">♡ ♡</div>
+          <article><b id="title"></b><span id="message"></span><small>♡</small></article>
+          <div class="card-panda">🐼</div>
+        </div>
+      </div><button id="next">Open next message →</button><img src="assets/panda-birthday.png" class="panda guide">
+    </section>
+    <section class="screen" id="cake"><img src="assets/panda-birthday.png" class="panda guide">
+      <p>MAKE A WISH</p>
+      <h2>Close your eyes,<br><em>Kavita.</em></h2><span>Tap the candle and let panda start the
+        celebration.</span><button id="wish"><img src="assets/birthday-cake.png"></button>
+    </section>
+    <section class="screen final" id="final"><img src="assets/birthday-ribbon.png" class="ribbon"><img
+        src="assets/panda-dancing.png" class="panda finalpanda">
+      <p>HAPPY BIRTHDAY</p>
+      <h1>Kavita,<br><em>you are loved.</em></h1>
+      <div class="heart" id="heart"></div><b>With all my love ♡</b><button id="again">Celebrate again ↺</button>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
